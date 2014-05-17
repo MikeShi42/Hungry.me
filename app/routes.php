@@ -15,9 +15,10 @@ Route::get('/', function()
 {
     if (Auth::check())
     {
-        return View::make('pages.home');
+        //return View::make('pages.home');
     }
-    return View::make('pages.index');
+    //return View::make('pages.index');
+    return View::make('pages.home');
 });
 
 Route::get('/search', 'SearchController@showSearchResults');

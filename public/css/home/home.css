@@ -1,0 +1,19 @@
+.panel{
+    overflow:hidden;
+}
+.imagePanel{
+    height: 280px;
+    overflow-y: hidden;
+    width: 90%;
+}
+.panelImage{
+    background: url('http://www.tacobell.com/tb_files/cbm/images/burrito-burrito.png') 50% 50% no-repeat;
+    width: 220px;
+    height: 220px;
+    background-size: cover;
+    display: inline-block;
+    margin-left: 30px;
+}
+.imagePanel-after{
+    margin-left: 15px;
+}
