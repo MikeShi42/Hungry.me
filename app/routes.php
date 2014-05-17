@@ -13,21 +13,25 @@
 
 Route::get('/', function()
 {
-	return View::make('pages.index');
+	$entries = Entry::all();
+	return View::make('entries')->with('entries', $entries);
 });
 
-
-if (Auth::check())
+Route::any('addEntry.php', function()
 {
-    Route::get('/home', function()
-    {
-        return View::make('pages.home');
-    });
-}
-
-Route::get('/search', function()
-{
-    return View::make('pages.index');
+	$entryText = Input::get('entry');
+	$message = "Entry successfully added!";
+	if($entryText && strlen(trim($entryText)) > 0)
+	{
+		$entry = new Entry;
+		$entry->entry = $entryText;
+		$entry->save();
+		Log::info('Added new entry');
+	}else
+	{	
+		$message = "Invalid entry.";
+	}
+	
+	$entries = Entry::all();
+	return View::make('entries')->with('entries', $entries)->with('message', $message);
 });
-
-Route::get('/search', 'SearchController@showSearchResults');
