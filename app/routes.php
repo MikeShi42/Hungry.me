@@ -20,4 +20,4 @@ Route::get('/', function()
     return View::make('pages.index');
 });
 
-Route::get('/search', 'SearchController@showSearchResults');
+Route::post('search','SearchController@showSearchResults');

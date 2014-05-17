@@ -2,12 +2,16 @@
 
 class SearchController extends BaseController {
 
-    public function showSearchResults($searchString)
+    public function showSearchResults()
     {
+        $searchString = Input::get('searchString');
+        $searchBy = Input::get('searchBy');
 
-        //$searchResults =
 
-        return View::make('hello');
+
+        return View::make('pages.search_result')
+            ->with('searchString',$searchString)
+            ->with('searchBy',$searchBy);
     }
 
 }
