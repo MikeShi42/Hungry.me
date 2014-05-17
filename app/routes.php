@@ -13,5 +13,21 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('pages.index');
 });
+
+
+if (Auth::check())
+{
+    Route::get('/home', function()
+    {
+        return View::make('pages.home');
+    });
+}
+
+Route::get('/search', function()
+{
+    return View::make('pages.index');
+});
+
+Route::get('/search', 'SearchController@showSearchResults');
