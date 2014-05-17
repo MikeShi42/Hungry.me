@@ -13,20 +13,10 @@
 
 Route::get('/', function()
 {
-	return View::make('pages.index');
-});
-
-
-if (Auth::check())
-{
-    Route::get('/home', function()
+    if (Auth::check())
     {
         return View::make('pages.home');
-    });
-}
-
-Route::get('/search', function()
-{
+    }
     return View::make('pages.index');
 });
 

@@ -1,4 +1,6 @@
 @extends('layouts.default')
 @section('content')
-    i am the landing page
+    {{ Form::open(array('url' => 'foo/bar')) }}
+
+    {{ Form::close() }}
 @stop
