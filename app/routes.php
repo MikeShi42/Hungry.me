@@ -17,12 +17,21 @@ Route::get('/', function()
 	return View::make('entries')->with('entries', $entries);
 });
 
-Route::get('addEntry.php', function()
+Route::any('addEntry.php', function()
 {
-	$entry = new Entry;
-	$entry->entry = Input::get('entry', 'Default');
-	$entry->save();
+	$entryText = Input::get('entry');
+	$message = "Entry successfully added!";
+	if($entryText && strlen(trim($entryText)) > 0)
+	{
+		$entry = new Entry;
+		$entry->entry = $entryText;
+		$entry->save();
+		Log::info('Added new entry');
+	}else
+	{	
+		$message = "Invalid entry.";
+	}
 	
 	$entries = Entry::all();
-	return View::make('entries')->with('entries', $entries);
+	return View::make('entries')->with('entries', $entries)->with('message', $message);
 });
