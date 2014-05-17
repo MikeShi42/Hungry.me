@@ -11,7 +11,20 @@
 |
 */
 
+Route::get('login/fb', 'LoginController@FacebookRedirect');
+Route::get('login/fb/callback', 'LoginController@FacebookCallback');
+Route::get('login', function(){ return Redirect::to('login/fb'); });
+Route::get('logout', function()
+{
+	Auth::logout();
+	return Redirect::to('/');
+});
+
 Route::get('/', function()
 {
-	return View::make('hello');
+	return Session::get('message');
 });
+Route::get('private', array('before' => 'auth', function()
+{
+	return 'Authenticated!';
+}));
