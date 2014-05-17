@@ -23,5 +23,6 @@ Route::get('addEntry.php', function()
 	$entry->entry = Input::get('entry', 'Default');
 	$entry->save();
 	
-	return HomeController->showEntries();
+	$entries = Entry::all();
+	return View::make('entries')->with('entries', $entries);
 });
