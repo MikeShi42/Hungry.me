@@ -97,6 +97,15 @@ class ImageController extends BaseController
         );
     }
 
+    public static function ServeArrayFoodBase64FromArrayURLs($ids){
+        $FoodImages = [];
+        foreach($ids as $id){
+            $fewdies = ImageController::ServeFoodBase64Image($id);
+            $FoodImages[] = ImageController::createBase64URL('',$fewdies[1]);
+        }
+        return $FoodImages;
+    }
+
     public static function createBase64URL($filetype, $base64){
         return 'data:image/'.$filetype.';base64,'.$base64;
     }
