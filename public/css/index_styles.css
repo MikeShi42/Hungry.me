@@ -1,7 +1,8 @@
+/*
 #body1 {
-    /*background-color: #ecf0f1;*/
-    position:relative;
+    background-color: #ecf0f1;
 }
+*/
 
 #body2 {
     background: url('https://www.tendergreens.com/files/Tuna%20Nicoise%201_96530.jpg') no-repeat center center fixed;
@@ -22,6 +23,64 @@
     opacity: 0.6;
 }
 
+#navbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    height:87px;
+}
+
+
+#logo {
+    position: relative;
+    width: 130px;
+    float: left;
+    margin-left: 30px;
+    margin-top: 30px;
+    z-index: 999;
+}
+
+
+#sign-in {
+    position: relative;
+    float: right;
+    right: 30px;
+    top: 30px;
+    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+     z-index: 999;
+}
+#sign-in a {
+    text-decoration: none;
+    color: black;
+}
+
+
+#sign-in a:hover {
+    color: #FA4632;
+}
+
+#sign-in2 {
+    position: relative;
+    float: right;
+    right: 30px;
+    top: 30px;
+    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    z-index: 999;
+}
+
+#sign-in2 a {
+    text-decoration: none;
+    color: white;
+}
+
+
+#sign-in2 a:hover {
+    color: #FA4632;
+}
 
 #title {
     position: relative;
@@ -77,25 +136,10 @@
 .cf:after{
     clear:both;
 }
-
-#outer-form-wrapper{
-    position:absolute;
-    left: 50%;
-    top: 25%;
-    width: 100%;
-    height: 50px;
-    float: left;
-}
-
+ 
 .cf{
     zoom:1;
-    /*margin-top: 59px;*/
-    position:relative;
-    left: -50%;
-    width: 100%;
-    height: 100%;
-    margin-top: -5%;
-}
+}  
 
 /* Form wrapper styling */
 /*
@@ -111,85 +155,69 @@
  
 */
 /* Form text input */
-
+ 
 .form-wrapper input {
     width: 31.55%;
+    height: 3.155%;
     padding: 10px 5px;
-    float: left;
+    float: left;    
     margin-left: 28%;
+    margin-top: 59px;
     font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
-    border: 1px solid black;
+    border: 1 solid black;
     background: #fff;
-    border-radius: 5px 5px;
-    box-sizing: border-box;
+    border-radius: 5px 5px;      
 }
-
+ 
 .form-wrapper input:focus {
     outline: 0;
     background: #fff;
     box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
 }
-
+ 
 .form-wrapper input::-webkit-input-placeholder {
-    color: #999;
-    font-weight: normal;
-    font-style: italic;
+   color: #999;
+   font-weight: normal;
+   font-style: italic;
 }
-
+ 
 .form-wrapper input:-moz-placeholder {
     color: #999;
     font-weight: normal;
     font-style: italic;
 }
-
+ 
 .form-wrapper input:-ms-input-placeholder {
     color: #999;
     font-weight: normal;
     font-style: italic;
-}
-
+}    
+ 
 /* Form submit button */
 .form-wrapper button {
-    /*    overflow: visible;*/
+/*    overflow: visible;*/
     position: relative;
+    left: 30%;
     border: 0;
     padding: 0;
     cursor: pointer;
-    width: 9.83%;
+    height: 3.155%;
+    width: 11.83%;
     font: 15px/40px 'Open Sans', 'trebuchet MS', 'Tahoma';
     color: #FA4632;
+    margin-left: 30%;
+    margin-top: -40px;
     background: #fff;
     border: 1px solid black;
-    border-radius: 5px 5px;
-    display:inline-block;
-    /*    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);*/
-}
-
-.form-wrapper button:hover{
+    border-radius: 5px 5px;      
+/*    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);*/
+}   
+   
+.form-wrapper button:hover{     
     background: #FA4632;
     color: #fff
-
-}
-
-.form-wrapper select{
-
-    position: relative;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-    height: 42px;
-    width: 6.83%;
-    margin-left: 5px;
-    min-width: 85px;
-    font: 15px/40px 'Open Sans', 'trebuchet MS', 'Tahoma';
-    color: #FA4632;
-    text-align:center;
-    text-indent: 15px;
-    background: #fff;
-    border: 1px solid black;
-    border-radius: 5px 5px;
-    display:inline-block;
-}
+    
+}   
 
 .tableCell {
     vertical-align:top;
@@ -224,7 +252,7 @@
     outline: 0;   
 }
 */
-
+ 
 /*
 .form-wrapper button:before {  left arrow 
     content: '';

@@ -1,10 +1,10 @@
 @extends('layouts.default')
 @section('head')
 <title>Gimme some ATP</title>
-{{ HTML::script('js/jquery.fullPage.js') }}
-{{ HTML::style('css/jquery.fullPage.css') }}
-{{ HTML::style('css/index_styles.css') }}
-{{ HTML::script('js/index.js') }}
+{{ HTML::script('/js/jquery.fullPage.js') }}
+{{ HTML::style('/css/jquery.fullPage.css') }}
+{{ HTML::style('/css/index_styles.css') }}
+{{ HTML::script('/js/index.js') }}
 @stop
 
 @section('content')

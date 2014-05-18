@@ -41,7 +41,19 @@ Route::get('restaurants/{id}/{name}', 'RestaurantInstanceController@showRestaura
 
 Route::get('tempOpinion', function(){ return csrf_token(); });
 //this route requires a parameter _token with the value of csrf_token() to work (e.g. updateReview?food_instance_id=10&rating=3&_token=asdfasdfasdfasdf )
-Route::get('updateReview', array('before' => 'auth|csrf', 'uses' => 'ReviewController@UpdateReview'));
+Route::post('updateReview', array('before' => 'auth|csrf', 'uses' => 'ReviewController@UpdateReview'));
 Route::get('getReview', 'ReviewController@GetReview');
 
 Route::get('food/{id}/{name}','FoodInstanceController@showFoodInstance');
+Route::get('randomStars', function()
+{
+    $food_instances = food_instance::all();
+    $controller = new ReviewController;
+    Input::merge(array('_token' => 'B9HkQzjxi7Zi2S6UYyRG1oSzU9OfpjOluxOn3VRv', 'reviewText' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'));
+    foreach($food_instances as $food)
+    {
+        Input::merge(array('food_instance_id' => $food->id, 'rating' => rand(1, 5)));
+        $controller->UpdateReview();
+        echo $food->id . ' ' . Input::get('rating') . '<br>';
+    }
+});

@@ -1,8 +1,8 @@
 @extends('layouts.default')
 @section('head')
 <title>Gimme some ATP</title>
-{{ HTML::style('css/search_result_style.css') }}
-{{ HTML::style('css/footer.css') }}
+{{ HTML::style('/css/search_result_style.css') }}
+{{ HTML::style('/css/footer.css') }}
 @stop
 @section('content')
     <?php

@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('head')
 <title>Food 4 Life</title>
-{{ HTML::style('css/home_styles.css') }}
+{{ HTML::style('/css/home_styles.css') }}
 @stop
 
 @section('content')

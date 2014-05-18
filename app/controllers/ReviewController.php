@@ -21,16 +21,16 @@ class ReviewController extends BaseController
 			$review->rating = Input::get('rating', 0);
 			$review->reviewText = Input::get('reviewText', '');
 			$success = $review->save();
-			if($success) return '{ success: true }';
+			if($success) return Redirect::To("/food/$food_instance_id/Name");;
 		}
-		return '{ success: false }';
+		return Redirect::To("/");
 	}
 	
 	//input: food_instance_id, [users_id]
 	function GetReview()
 	{
-		$users_id = Input::get('users_id', Auth::user()->id);
-		if(Input::has('food_instance_id'))
+		$users_id = Input::get('users_id', is_null(Auth::user()) ? null : Auth::user()->id);
+		if(!is_null($users_id) && Input::has('food_instance_id'))
 		{
 			$food_instance_id = Input::get('food_instance_id');
 			$review = review::where('users_id', '=', $users_id)->where('food_instance_id', '=', $food_instance_id)->first();

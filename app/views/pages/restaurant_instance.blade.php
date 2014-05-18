@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('head')
-    {{ HTML::style('css/restaurant.css') }}
+    {{ HTML::style('/css/restaurant.css') }}
 @stop
 @section('content')
     <div id="container">
