@@ -1,9 +1,8 @@
 @extends('layouts.default')
 @section('head')
 <title>Gimme some ATP</title>
-{{ HTML::style('css/search_result_style.css') }}
-{{ HTML::style('css/subpage_footer_style.css') }}
-
+{{ HTML::style('/css/search_result_style.css') }}
+{{ HTML::style('/css/subpage_footer_style.css') }}
 @stop
 @section('content')
     <?php
@@ -11,19 +10,6 @@
     $searchBy = $_POST['searchBy'];
     $searchString = $_POST['searchString'];
     //$resultsLength = 0;
-
-    function getAverage($itemReviews){
-        $sum = 0;
-        foreach($itemReviews as $itemReview)
-        {
-            $sum = $sum + $itemReview->rating;
-        }
-        $size = sizeof($itemReviews);
-        if($size == 0){
-            return 0;
-        }
-        return $sum/$size;
-    }
 
     ?>
 
@@ -46,28 +32,30 @@
     if($searchBy == 'I')
     {
         $items = $results[0];
-        $itemsReviews = $results[1];
+        $averageRatings = $results[1];
         $itemPictures = $results[2];
         $resultsLength=sizeof($items);
         if($resultsLength>0){
             for($i = 0;$i<sizeof($items);$i++)
             {
                 ?>
+                <a href=<?php echo "'food/".$items[$i]['id']."/".$items[$i]['name']."'"?>>
                 <div class="review" id=<?php echo "review".$i?>>
                     <div class="food-pic" id="review1-pic" style="background-image:url({{{ $itemPictures[$i] }}})"></div>
                     <div class="food-text">
                         <span class="food-name" style="line-height:30px;">{{{$items[$i]['name']}}} - ${{{number_format((float)$items[$i]['price'], 2, '.', '')}}} </span>
                         <div class="grey-review-stars">
-                            <div class="red-review-stars" style="width: <?php echo getAverage($itemsReviews[$i])/5.0*100; ?>% ">
+                            <div class="red-review-stars" style="width: <?php echo $averageRatings[$i][0]/5.0*100; ?>% ">
                             </div>
                         </div> <br/>
                     <span class="food-description">
                         <?php echo $items[$i]['description'];?>
                     </span>
                         <br/>
-                        <span id="number-of-reviews" style="line-height:30px;"><a href="#"> <?php echo sizeof($itemsReviews[$i]).' reviews'?> &#10230;</a></span>
+                        <span id="number-of-reviews" style="line-height:30px;"><a href="#"> <?php echo sizeof($averageRatings[$i][1]).' reviews'?> &#10230;</a></span>
                     </div>
                 </div>
+                </a>
                 <?php
             }
         }
