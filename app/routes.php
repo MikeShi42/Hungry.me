@@ -20,9 +20,11 @@ Route::get('/', function()
 {
     if (Auth::check())
     {
-        return View::make('pages.home');
+        $controller = new HomeController;
+        return $controller->showHome();
+    }else{
+        return View::make('pages.index');
     }
-    return View::make('pages.index');
 });
 
 Route::post('search','SearchController@showSearchResults');
