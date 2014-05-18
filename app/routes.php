@@ -28,3 +28,9 @@ Route::get('private', array('before' => 'auth', function()
 {
 	return 'Authenticated!';
 }));
+
+Route::get('imgupload', function()
+{
+	return View::make('imgupload')->with('message', Session::get('message'));
+});
+Route::post('upload', 'ImageController@GetAndSaveImage');
