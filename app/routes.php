@@ -11,6 +11,15 @@
 |
 */
 
+Route::get('login/fb', 'LoginController@FacebookRedirect');
+Route::get('login/fb/callback', 'LoginController@FacebookCallback');
+Route::get('login', function(){ return Redirect::to('login/fb'); });
+Route::get('logout', function()
+{
+	Auth::logout();
+	return Redirect::to('/');
+});
+
 Route::get('/', function()
 {
     if (Auth::check())
@@ -20,4 +29,7 @@ Route::get('/', function()
     return View::make('pages.index');
 });
 
-Route::post('search','SearchController@showSearchResults');
+Route::post('search','SearchController@showSearchResults');Route::get('private', array('before' => 'auth', function()
+{
+	return 'Authenticated!';
+}));
