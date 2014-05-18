@@ -2,6 +2,7 @@
 @section('head')
 <title>Food 4 Life</title>
 {{ HTML::style('css/home_styles.css') }}
+{{ HTML::style('css/subpage_footer_style.css') }}
 <script>
     $(document).ready(function(){
         $("#arrow").click(function(){
@@ -22,7 +23,7 @@
     <div id="outer-form-wrapper">
         <form class="form-wrapper cf" action="/search" type="search" method="post">
             <!--TITLE-->
-            <div id="title">What's Good?</div> <br>
+            <div id="title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <br>
             <div id="slogan">Search restaurants and menu items:</div>
             <br>
             <br>

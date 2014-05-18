@@ -25,7 +25,38 @@ body {
     clear:right;
 }
 
+#user {
+    margin-top: 30px;
+}
 
+#user-name {
+    position: relative;;
+    display: inline;
+    right: 0px;
+    top: 0px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 30px;
+    padding-top: 10px;
+    font-weight: 300;
+    z-index: 999;
+    float: right;
+    /*    clear: both;*/
+}
+
+#profile-picture {
+    background: url('https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-prn2/t1.0-9/s720x720/10308559_10203780055722400_5664688402385287641_n.jpg');
+    background-size: cover;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    /*    margin-top: 30px;*/
+    display: inline-block;
+    margin-right: 15px;
+    border: 1px solid black;
+    border-radius: 50%;
+    float: right;
+}
 /*
 #sign-in a {
     text-decoration: none;
@@ -67,14 +98,14 @@ body {
     content:"";
     display:table;
 }
- 
+
 .cf:after{
     clear:both;
 }
- 
+
 .cf{
     zoom:1;
-}    
+}
 
 /*
 .form-wrapper {
@@ -87,83 +118,119 @@ body {
     box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
 }
 */
- 
+
 /* Form text input */
- 
+
 .form-wrapper input {
     width: 31.55%;
-    height: 3.155%;
     padding: 10px 5px;
-    float: left;    
+    float: left;
     margin-left: 28%;
-    margin-top: 5px;
     font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     border: 1px solid black;
     background: #fff;
-    border-radius: 5px 5px;      
-    clear: both;
+    border-radius: 5px 5px;
+    box-sizing: border-box;
 }
- 
- 
+
+
 .form-wrapper input:focus {
     outline: 0;
     background: #fff;
     box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
 }
- 
+
 .form-wrapper input::-webkit-input-placeholder {
-   color: #999;
-   font-weight: normal;
-   font-style: italic;
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
 }
- 
+
 .form-wrapper input:-moz-placeholder {
     color: #999;
     font-weight: normal;
     font-style: italic;
 }
- 
+
 .form-wrapper input:-ms-input-placeholder {
     color: #999;
     font-weight: normal;
     font-style: italic;
-}    
- 
+}
+
 /* Form submit button */
 .form-wrapper button {
+    /*    overflow: visible;*/
     position: relative;
-/*    left: 30%;*/
-    float: right;
     border: 0;
     padding: 0;
     cursor: pointer;
-    height: 3.155%;
-    width: 11.83%;
+    width: 9.83%;
     font: 15px/40px 'Open Sans', 'trebuchet MS', 'Tahoma';
     color: #FA4632;
-    margin-left: 31%;
-    margin-right: 27%;
-    margin-top: -40px;
     background: #fff;
     border: 1px solid black;
-    border-radius: 5px 5px;      
-/*    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);*/
-}   
-   
-.form-wrapper button:hover{     
+    border-radius: 5px 5px;
+    display:inline-block;
+    /*    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);*/
+}
+
+.form-wrapper button:hover{
     background: #FA4632;
     color: #fff
-    
-}   
+
+}
+
+.form-wrapper select{
+
+    position: relative;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 42px;
+    width: 6.83%;
+    margin-left: 5px;
+    min-width: 85px;
+    font: 15px/40px 'Open Sans', 'trebuchet MS', 'Tahoma';
+    color: #FA4632;
+    text-align:center;
+    text-indent: 15px;
+    background: #fff;
+    border: 1px solid black;
+    border-radius: 5px 5px;
+    display:inline-block;
+}
 
 #history {
     position: relative;
-    width: 700px;
+    width: 800px;
     height: 180px;
     left: 50%;
     margin-left: -350px;
     margin-top: 20px;
     clear: both;
+}
+
+.history-images {
+    width: 710px;
+    height: 160px;
+    margin-top: 10px;
+}
+
+#arrow {
+    position: relative;
+    font-family: sans-serif;
+    color: black;
+    font-weight: 300;
+    font-size: 12px;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    float: right;
+    text-align: center;
+    margin-top: -20px;
 }
 
 #history-title {
@@ -173,20 +240,12 @@ body {
 }
 
 .history-images {
-    width: 700px;
+    width: 704px;
+    height: 160px;
     margin-top: 10px;
 }
 
-.history-images a {
-/*
-        -webkit-transition: all 1s ease;
-    
-        -moz-transition: all 1s ease;
-        -o-transition: all 1s ease;
-        -ms-transition: all 1s ease;
-        transition: all 1s ease;
-    
-*/
+a .images {
     transition: all 0.5s ease;
     -webkit-transform: translate3d(0,0,0)
 }
@@ -194,6 +253,15 @@ body {
 .history-images a:hover {
     -webkit-filter: grayscale(100%)
 }
+
+.more-history-images {
+    position: relative;
+    width: 700px;
+    height: 150px;
+    top: 10px;
+    display: none;
+}
+
 .image {
     position: relative;
     width: 150px;
@@ -224,20 +292,21 @@ body {
     background: url('http://twinspiration22.com/wp-content/uploads/2013/11/RV-1.jpg') 50% 50% no-repeat;
     background-size: cover;
 }
-
 #suggestions {
     position: relative;
     width: 700px;
-    height: 180px;
+    height: 160px;
     left: 50%;
     margin-left: -350px;
-    margin-top: 20px;
+    top: 20px;
     clear: both;
+
 }
 
 .suggestions-images {
-    width: 700px;
+    width: 704px;
     margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 #suggestions-title {
@@ -266,6 +335,21 @@ body {
     background-size: cover;
 }
 
+#arrow2 {
+    position: relative;
+    font-family: sans-serif;
+    color: black;
+    font-weight: 300;
+    font-size: 12px;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    float: right;
+    text-align: center;
+    margin-top: -20px;
+}
 .suggestions-images a {
     transition: all 0.5s ease;
     -webkit-transform: translate3d(0,0,0)
@@ -275,9 +359,9 @@ body {
     -webkit-filter: grayscale(100%)
 }
 
-.history-images-more {
+.more-suggestions-images {
     position: relative;
-    width: 700px;
-    height: 180px;
-    top: 10px;
+    top: 20px;
+    display: none;
+    height: 150px;
 }
