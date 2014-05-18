@@ -1,6 +1,8 @@
 @extends('layouts.default')
 @section('head')
     {{ HTML::style('css/restaurant.css') }}
+{{ HTML::style('css/subpage_footer_style.css') }}
+
 @stop
 @section('content')
     <div id="container">

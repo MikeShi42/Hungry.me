@@ -2,6 +2,8 @@
 @section('head')
 <title>Gimme some ATP</title>
 {{ HTML::style('css/search_result_style.css') }}
+{{ HTML::style('css/subpage_footer_style.css') }}
+
 @stop
 @section('content')
     <?php
@@ -24,16 +26,6 @@
     }
 
     ?>
-
-    <div id="navbar">
-        <!--LOGO-->
-        <img id="logo" src="assets/hungry.me_logo_main.png">
-        <!--USER-->
-        <div id="user">
-            <div id="user-name">Tina S. Zheng</div>
-            <div id="profile-picture"></div>
-        </div>
-    </div>
 
     <!--TITLE-->
     <!--    <div id="title">What's Good?</div> <br> -->

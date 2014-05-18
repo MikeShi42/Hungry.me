@@ -1,0 +1,22 @@
+#body2-footer {
+    /*position: absolute;*/
+    text-align: center;
+    width: 900px;
+    left: 50%;
+    margin: 15px auto;
+    color: black;
+    font-size: 12px;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: 300;
+    bottom: 10px;
+    z-index: 999;
+}
+
+#body2-footer a {
+    text-decoration: none;
+    color: black;
+}
+
+#body2-footer a:hover {
+    color: #FA4632;
+}
