@@ -22,9 +22,14 @@ Route::get('logout', function()
 
 Route::get('/', function()
 {
-	return Session::get('message');
+    if (Auth::check())
+    {
+        return View::make('pages.home');
+    }
+    return View::make('pages.index');
 });
-Route::get('private', array('before' => 'auth', function()
+
+Route::post('search','SearchController@showSearchResults');Route::get('private', array('before' => 'auth', function()
 {
 	return 'Authenticated!';
 }));
