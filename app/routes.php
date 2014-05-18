@@ -37,6 +37,8 @@ Route::get('imgupload', function()
 	return View::make('imgupload')->with('message', Session::get('message'));
 });
 Route::post('upload', 'ImageController@GetAndSaveImage');
+Route::get('imgview', 'ImageController@LoadImage');
+Route::get('serveImage', 'ImageController@ServeImage');
 
 Route::get('restaurants/{id}/{name}', 'RestaurantInstanceController@showRestaurant')
     ->where(array('id' => '[0-9]+'));

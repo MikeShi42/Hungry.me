@@ -31,4 +31,50 @@ class ImageController extends BaseController
 		}
 		return Redirect::to('imgupload')->with('message', $message);
 	}
+	
+	//displays all images of the given type with the given restaurant_id or food_instances_id
+	function LoadImage()
+	{
+		if(Input::has('type'))
+		{
+			$type = Input::get('type');
+			$images = null;
+			if($type == 'restaurant' && Input::has('restaurants_id'))
+			{
+				$images = RestaurantImage::where('restaurants_id', '=', Input::get('restaurants_id'))->get()->toArray();
+			}else if($type == 'food' && Input::has('food_instances_id'))
+			{
+				$images = FoodImage::where('food_instances_id', '=', Input::get('food_instances_id'))->get()->toArray();
+			}
+			if(!is_null($images))
+			{
+				foreach($images as $image)
+				{
+					$id = $image['id'];
+					echo "<img src=\"serveImage?type=$type&id=$id\">"; //TODO IS THIS VULNERABLE TO INJECTION? PERHAPS ADD A CLASS TO THESE IMAGES
+				}
+			}
+		}
+	}
+	
+	//Serves the image with the given id, of the given type (restaurant or food)
+	function ServeImage()
+	{
+		if(Input::has('type') && Input::has('id'))
+		{
+			$type = Input::get('type');
+			$imageRaw = null;
+			if($type == 'restaurant')
+			{
+				$imageRaw = RestaurantImage::find(Input::get('id'))->imageData;
+			}else if($type == 'food')
+			{
+				$imageRaw = FoodImage::find(Input::get('id'))->imageData;
+			}
+			$image = base64_decode($imageRaw);
+			header('Content-Type: image'); //TODO DO WE NEED JPEG/GIF/PNG/ETC?
+			echo $image;
+			return;
+		}
+	}
 }
