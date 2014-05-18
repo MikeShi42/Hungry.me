@@ -31,7 +31,7 @@
     </div>
     <div id="body2" class="section">
         <!--    SIGN IN-->
-        <div id="sign-in2"><a href="#">SIGN IN</a></div>
+        <div id="sign-in2"><a href="login">SIGN IN</a></div>
         <div id="body2-title">
             Indecisive about what to order?
         </div>
