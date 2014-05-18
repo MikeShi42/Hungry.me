@@ -32,7 +32,7 @@
                 {{{ $food->description }}}
             </span>
             <br/>
-            <span id="number-of-reviews" style="line-height:30px;"><a href="#">{{{ $ratings[$food->id]['Count'] }}} Reviews &#10230;</a></span>
+            <span id="number-of-reviews" style="line-height:30px;"><a href="/food/{{ $food->id }}/{{ $food->name }}">{{{ $ratings[$food->id]['Count'] }}} Reviews &#10230;</a></span>
         </div>
     </div>
 @endforeach
