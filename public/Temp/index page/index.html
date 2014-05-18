@@ -1,0 +1,34 @@
+<head>
+    <title>Gimme some ATP</title>
+    <link rel="stylesheet" type="text/css" href="css/index_styles.css">
+</head>
+
+<body>
+    
+
+<!--LOGO-->
+    <img id="logo" src="assets/hungry.me_logo_main.png">
+<!--TITLE-->
+    <div id="title">What's Good? <br> Search restaurants and menu items:</div>
+<!--SEARCH BAR-->
+
+<!-- Add jQuery to your website if you don't have it already -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- JAVASCRIPT to clear search text when the field is clicked -->
+<script type="text/javascript">
+$(function() {
+	$("#tfq2b").click(function() {
+		if ($("#tfq2b").val() == "Search our website"){
+			$("#tfq2b").val(""); 
+		}
+	});
+});
+</script>
+    
+    <div id="tfheader">
+		<form id="tfnewsearch" method="get" action="http://www.google.com">
+		        <input type="text" id="tfq2b" class="tftextinput2" name="q" size="40" maxlength="120" value="Search 4 foooooood !!!"><input type="submit" value=">" class="tfbutton2">
+		</form>
+		<div class="tfclear"></div>
+	</div>
+</body>
