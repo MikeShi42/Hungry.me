@@ -13,7 +13,7 @@
 
         <!--SEARCH BAR-->
         <div id="outer-form-wrapper">
-            <form class="form-wrapper cf" type="search">
+            <form class="form-wrapper cf" action="/search" type="search" method="post">
                 <!--TITLE-->
                 <div id="title">What's Good?</div> <br>
                 <div id="slogan">Search restaurants and menu items:</div>

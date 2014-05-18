@@ -8,7 +8,7 @@
 
     $searchBy = $_POST['searchBy'];
     $searchString = $_POST['searchString'];
-    $resultsLength = 0;
+    //$resultsLength = 0;
 
     function getAverage($itemReviews){
         $sum = 0;
@@ -16,7 +16,11 @@
         {
             $sum = $sum + $itemReview->rating;
         }
-        return $sum/sizeof($itemReviews);
+        $size = sizeof($itemReviews);
+        if($size == 0){
+            return 0;
+        }
+        return $sum/$size;
     }
 
     ?>
@@ -36,8 +40,12 @@
     <div id="slogan">Search restaurants and menu items:</div>
     <!--SEARCH BAR-->
     <form class="form-wrapper cf">
-        <input type="text" placeholder="Search here..." required>
-        <button type="submit">Search</button>
+        <input name="searchString" type="text" placeholder="<?php echo $searchString; ?>" required>
+        <select name="searchBy">
+            <option value="I">Foods</option>
+            <option value="R">Restaurants</option>
+        </select>
+        <button type="submit">Search!</button>
     </form>
 
     <div id="search-result-title">Your search <span id="search-tag"><?php echo $searchString; ?></span> returned <?php echo $resultsLength; ?> results:</div>
@@ -47,21 +55,25 @@
     {
         $items = $results[0];
         $itemsReviews = $results[1];
+        $itemPictures = $results[2];
         $resultsLength=sizeof($items);
         if($resultsLength>0){
             for($i = 0;$i<sizeof($items);$i++)
             {
                 ?>
                 <div class="review" id=<?php echo "review".$i?>>
-                    <div class="food-pic" id="review1-pic"></div>
+                    <div class="food-pic" id="review1-pic" style="background-image:url({{{ $itemPictures[$i] }}})"></div>
                     <div class="food-text">
-                        <span class="food-name" style="line-height:30px;"><?php echo $items[$i]['name'].' - '.$items[$i]['price'];?> </span>
-                        <img id="stars" src="assets/rating_stars_red.png"><?php echo getAverage($itemsReviews[$i]); ?> <br/>
+                        <span class="food-name" style="line-height:30px;">{{{$items[$i]['name']}}} - ${{{number_format((float)$items[$i]['price'], 2, '.', '')}}} </span>
+                        <div class="grey-review-stars">
+                            <div class="red-review-stars" style="width: <?php echo getAverage($itemsReviews[$i])/5.0*100; ?>% ">
+                            </div>
+                        </div> <br/>
                     <span class="food-description">
                         <?php echo $items[$i]['description'];?>
                     </span>
                         <br/>
-                        <span id="number-of-reviews" style="line-height:30px;"><a href="#"> <?php echo sizeof($itemReviews[$i]).' reviews'?> &#10230;</a></span>
+                        <span id="number-of-reviews" style="line-height:30px;"><a href="#"> <?php echo sizeof($itemsReviews[$i]).' reviews'?> &#10230;</a></span>
                     </div>
                 </div>
                 <?php
@@ -82,17 +94,16 @@
             {
             ?>
                 <div class="review" id=<?php echo "review".$i?>>
-                    <div class="food-pic" id="review1-pic"></div>
+                    <div class="food-pic" id="review1-pic" style="background-image:url({{{ $restaurantsImages[$i] }}})"></div>
                     <div class="food-text">
                         <span class="food-name" style="line-height:30px;"><?php echo $restaurants[$i]['name'];?> </span>
-                        <img id="stars" src="assets/rating_stars_red.png"><?php echo 'placeholder average' ?> <br/>
                     <span class="food-description"><?php echo $restaurants[$i]['description'];?></span>
                     <span class="food-description"><?php echo $restaurants[$i]['phoneNumber'];?></span>
                     <span class="food-description"><?php echo $restaurants[$i]['location'];?></span>
                     <span class="food-description"><a href=<?php echo $restaurants[$i]['websiteURL'];?> target='_blank'><?php echo $restaurants[$i]['websiteURL'];?></a></span>
 
                         <br/>
-                        <span id="number-of-reviews" style="line-height:30px;"><a href="#"> <?php echo sizeof($itemReviews[$i]).' items'?> &#10230;</a></span>
+                        <!--<span id="number-of-reviews" style="line-height:30px;"><a href="#"> <?php //echo sizeof($itemsReviews[$i]).' items'?> &#10230;</a></span>-->
                     </div>
                 </div>
 

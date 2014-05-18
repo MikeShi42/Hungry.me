@@ -52,7 +52,6 @@
 }
 
 #slogan {
-    position: absolute;
     width: 100%;
     text-align: center;
     top: 80px;
@@ -74,6 +73,8 @@
 
 .cf{
     zoom:1;
+    margin: 0 auto;
+    width: 47%;
 }
 
 /*
@@ -91,12 +92,9 @@
 /* Form text input */
 
 .form-wrapper input {
-    width: 31.55%;
+    width: 77.55%;
     height: 3.155%;
     padding: 10px 5px;
-    float: left;
-    margin-left: 28%;
-    margin-top: 5px;
     font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     border: 1px solid black;
     background: #fff;
@@ -129,24 +127,21 @@
     font-style: italic;
 }
 
+
 /* Form submit button */
 .form-wrapper button {
+    /*    overflow: visible;*/
     position: relative;
-    /*    left: 30%;*/
-    float: right;
     border: 0;
     padding: 0;
     cursor: pointer;
-    height: 3.155%;
-    width: 11.83%;
+    width: 9.83%;
     font: 15px/40px 'Open Sans', 'trebuchet MS', 'Tahoma';
     color: #FA4632;
-    margin-left: 31%;
-    margin-right: 27%;
-    margin-top: -40px;
     background: #fff;
     border: 1px solid black;
     border-radius: 5px 5px;
+    display:inline-block;
     /*    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);*/
 }
 
@@ -154,6 +149,26 @@
     background: #FA4632;
     color: #fff
 
+}
+
+.form-wrapper select{
+
+    position: relative;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 42px;
+    width: 6.83%;
+    margin-left: 5px;
+    min-width: 85px;
+    font: 15px/40px 'Open Sans', 'trebuchet MS', 'Tahoma';
+    color: #FA4632;
+    text-align:center;
+    text-indent: 15px;
+    background: #fff;
+    border: 1px solid black;
+    border-radius: 5px 5px;
+    display:inline-block;
 }
 
 #search-result-title {
@@ -199,8 +214,23 @@
     margin-top: 10px;
 }
 
-#stars {
-    width: 90px;
+.grey-review-stars{
+    background-image: url('/images/rating_stars_gray.png');
+    background-size: cover;
+    width: 95px;
+    height: 20px;
+    position:relative;
+    display: inline-block;
+    margin-left: 5px;
+}
+.red-review-stars{
+    background-image: url('/images/rating_stars_red.png');
+    background-size: cover;
+    width: 95px;
+    height: 20px;
+    position:absolute;
+    left: 0;
+    top: 0;
 }
 
 .food-name {

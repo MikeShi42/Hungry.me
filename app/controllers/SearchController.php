@@ -19,6 +19,7 @@ class SearchController extends BaseController {
             foreach($searchKeyWords as $keyword)
             {
                 $foodNameQueryResult = food_instance::where('name','LIKE','%'.$keyword.'%');
+                $resultsLength = $foodNameQueryResult->count();
                 if($foodNameQueryResult->count()>0)
                     $resultNames = array_merge($resultNames,$foodNameQueryResult->get()->toArray());
             }
@@ -50,16 +51,17 @@ class SearchController extends BaseController {
 
             //get reviews and pictures
             $resultItemsReviews = array();
-            //$resultsItemsPictures = array();
+            $resultsItemsPictures = array();
             if(sizeof($resultsItems)>0){
                 foreach($resultsItems as $item){
                     $food_instance_id = $item['id'];
-                    $resultItemsReviews = array_merge($resultItemsReviews,DB::table('reviews')->where('food_instance_id','=',$food_instance_id)->get());
-                    //$resultsItemsPictures = array_push($resultsItemsPictures,DB::table('food_images')->where('food_instance_id','=',$food_instance_id)->pluck('imageData'));
+                    $resultItemsReviews[] = review::where('food_instance_id','=',$food_instance_id)->get();
+                    $foodResultObject = ImageController::ServeFoodBase64Image($food_instance_id); //Let's get moar base64 imagesss
+                    array_push($resultsItemsPictures,ImageController::createBase64URL($foodResultObject[0],$foodResultObject[1]));
                 }
             }
 
-            $searchResults = array($resultsItems,$resultItemsReviews/*,$resultsItemsPictures*/);
+            $searchResults = array($resultsItems,$resultItemsReviews, $resultsItemsPictures);
 
         }
 
@@ -70,7 +72,8 @@ class SearchController extends BaseController {
             foreach($searchKeyWords as $keyword)
             {
                 $resultsRestaurantQuery = restaurant::where('name','LIKE','%'.$keyword.'%');
-                if($resultsRestaurantQuery->count())
+                $resultsLength = $resultsRestaurantQuery->count();
+                if($resultsRestaurantQuery->count() != 0)
                     $resultsRestaurant = array_merge($resultsRestaurant,$resultsRestaurantQuery->get()->toArray());
             }
 
@@ -78,7 +81,8 @@ class SearchController extends BaseController {
             $resultsRestaurantImages = array();
             if(sizeof($resultsRestaurant)>0){
                 foreach($resultsRestaurant as $restaurant){
-                    $resultsRestaurantImages = array_merge($resultsRestaurantImages,DB::table('restaurant_images')->where('restaurant_ids','=',$restaurant['id'])->lists('imageData'));
+                    $restaurantResultObject = ImageController::ServeRestaurantBase64Image($restaurant['id']);
+                    $resultsRestaurantImages[] = ImageController::createBase64URL($restaurantResultObject[0],$restaurantResultObject[1]);
                 }
             }
 
@@ -86,7 +90,7 @@ class SearchController extends BaseController {
         }
 
 
-        return View::make('pages.search_result')->with('results', $searchResults);
+        return View::make('pages.search_result')->with('results', $searchResults)->with('resultsLength', $resultsLength);
     }
 
 }
