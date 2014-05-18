@@ -7,6 +7,7 @@
  */
 
 class viewed_food_history extends Eloquent {
+	public $timestamps = false;
 }
 
 ?>

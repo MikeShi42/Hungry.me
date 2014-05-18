@@ -17,6 +17,19 @@ class foodInstanceController extends BaseController {
     public function showFoodInstance($id, $name)
     {
         $foodInstance = food_instance::find($id);
+		if(Auth::check())
+		{
+			$users_id = Auth::user()->id;
+			$food_instances_food_types_id = $foodInstance->food_types_id;
+			$food_instances_restaurants_id = $foodInstance->restaurants_id;
+			$history = new viewed_food_history;
+			$history->users_id = $users_id;
+			$history->food_instances_id = $id;
+			$history->food_instances_food_types_id = $food_instances_food_types_id;
+			$history->food_instances_restaurants_id = $food_instances_restaurants_id;
+			$history->save();
+		}
+		
         $foodImageDatas = ImageController::ServeCollectionFoodBase64URLs($id);
         $foodImageBase64URL = array();
         foreach($foodImageDatas as $foodImageData){
@@ -40,7 +53,10 @@ class foodInstanceController extends BaseController {
 
         $rating= array('Rating' => $avgRating,'Count' => $numReviews, 'Reviews'=>$reviews);
 
-        return View::make('pages.food_instance')->with('food',$foodInstance)->with('rating', $rating)->with('foodImagesBase64', $foodImageBase64URL)->with('foodImagesBase64', $foodImageDatas);
+		$safm = ImageController::ServeFoodBase64Image($id);
+		$b64ww = ImageController::createBase64URL('',$safm[1]);
+		
+        return View::make('pages.food_instance')->with('food',$foodInstance)->with('rating', $rating)->with('foodImageBase64', $b64ww);
     }
 
 

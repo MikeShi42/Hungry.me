@@ -19,7 +19,7 @@
 
 @section('content')
 <div id="container">
-        <div class="food-img"></div>
+        <div class="food-img" style="background:url('{{ $foodImageBase64 }}')"></div>
         <div id="food-description">
 			<span id="name">{{ $food->name }} - ${{ $food->price }}</span><br/>
 			<span class="quote">"{{ $food->description }}"</span>
@@ -58,7 +58,7 @@
                 <div class="review-text">
                 {{ $review->reviewText }}
                 </div>
-                <div class="user-uploaded-pic"></div>
+                <!--<div class="user-uploaded-pic"></div>TODO USELESS IMAGE-->
             </div>
         </div>
 		@endforeach
