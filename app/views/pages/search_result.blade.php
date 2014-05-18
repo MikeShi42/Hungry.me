@@ -39,7 +39,7 @@
     <!--    <div id="title">What's Good?</div> <br> -->
     <div id="slogan">Search restaurants and menu items:</div>
     <!--SEARCH BAR-->
-    <form class="form-wrapper cf">
+    <form class="form-wrapper cf" action="/search" method="post">
         <input name="searchString" type="text" placeholder="<?php echo $searchString; ?>" required>
         <select name="searchBy">
             <option value="I">Foods</option>

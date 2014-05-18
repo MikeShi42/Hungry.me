@@ -65,7 +65,7 @@ class SearchController extends BaseController {
 
         }
 
-        //Search Restauraunts
+        //Search Restaurants
         if($searchBy == 'R'){
 
             $resultsRestaurant = array();

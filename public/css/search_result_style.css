@@ -92,7 +92,7 @@
 /* Form text input */
 
 .form-wrapper input {
-    width: 77.55%;
+    width: 70%;
     height: 3.155%;
     padding: 10px 5px;
     font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
@@ -160,7 +160,7 @@
     height: 42px;
     width: 6.83%;
     margin-left: 5px;
-    min-width: 85px;
+    min-width: 135px;
     font: 15px/40px 'Open Sans', 'trebuchet MS', 'Tahoma';
     color: #FA4632;
     text-align:center;
