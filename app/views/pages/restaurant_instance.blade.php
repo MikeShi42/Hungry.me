@@ -18,7 +18,7 @@
         </div>
     </div>
 @foreach($foods as $food)
-    <div class="review" id="review1">
+    <div class="review">
         <div class="food-pic" id="review1-pic"></div>
         <div class="food-text">
             <span class="food-name" style="line-height:30px;">{{{$food->name}}} - ${{{number_format((float)$food->price, 2, '.', '')}}} </span>

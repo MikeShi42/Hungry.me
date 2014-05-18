@@ -10,24 +10,24 @@
 @section('content')
 <div id="fullpage">
     <div id="body1" class="section">
-        <div id="navbar">
-            <!--LOGO-->
-            <img id="logo" src="assets/hungry.me_logo_main.png">
-            <!--    SIGN IN-->
-            <div id="sign-in"><a href="#">SIGN IN</a></div>
-        </div>
-        <!--TITLE-->
-        <div id="title">What's Good?</div> <br>
-        <div id="slogan">Search restaurants and menu items:</div>
+
         <!--SEARCH BAR-->
-        <form class="form-wrapper cf" type="search">
-            <input name="searchString" type="text" placeholder="One step closer to fooooood..." required>
-            <select name="searchBy">
-                <option value="I">Items</option>
-                <option value="R">Restaurants</option>
-            </select>
-            <button type="submit">Search!</button>
-        </form>
+        <div id="outer-form-wrapper">
+            <form class="form-wrapper cf" type="search">
+                <!--TITLE-->
+                <div id="title">What's Good?</div> <br>
+                <div id="slogan">Search restaurants and menu items:</div>
+                <br>
+                <br>
+                <br>
+                <input name="searchString" type="text" placeholder="One step closer to fooooood..." required>
+                <select name="searchBy">
+                    <option value="I">Foods</option>
+                    <option value="R">Restaurants</option>
+                </select>
+                <button type="submit">Search!</button>
+            </form>
+        </div>
     </div>
     <div id="body2" class="section">
         <!--    SIGN IN-->
