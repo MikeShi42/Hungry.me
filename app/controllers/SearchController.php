@@ -2,6 +2,17 @@
 
 class SearchController extends BaseController {
 
+    private function averageRating($itemReviews)
+    {
+        $sum = 0;
+        foreach($itemReviews as $itemReview)
+        {
+            $sum = $sum + $itemReview->rating;
+        }
+        $size = sizeof($itemReviews);
+        return ($size == 0) ? 0 : $sum / $size;
+    }
+
     public function showSearchResults()
     {
         $searchString = Input::get('searchString');
@@ -50,19 +61,34 @@ class SearchController extends BaseController {
             $resultsItems = array_unique($resultsItems, SORT_REGULAR);
 
             //get reviews and pictures
-            $resultItemsReviews = array();
+            $resultAverageRatings = array();
             $resultsItemsPictures = array();
             if(sizeof($resultsItems)>0){
                 foreach($resultsItems as $item){
                     $food_instance_id = $item['id'];
-                    $resultItemsReviews[] = review::where('food_instance_id','=',$food_instance_id)->get();
+                    $reviews = review::where('food_instance_id','=',$food_instance_id)->get();
+                    $resultAverageRatings[] = array($this->averageRating($reviews), sizeof($reviews));
                     $foodResultObject = ImageController::ServeFoodBase64Image($food_instance_id); //Let's get moar base64 imagesss
                     array_push($resultsItemsPictures,ImageController::createBase64URL($foodResultObject[0],$foodResultObject[1]));
                 }
             }
 
-            $searchResults = array($resultsItems,$resultItemsReviews, $resultsItemsPictures);
-
+            //average ratings is an array(averageRating, number of reviews)
+            $unsortedSearchResults = array($resultsItems, $resultAverageRatings, $resultsItemsPictures);
+            $sorted = array(); //just a temporary array containing original index => average rating
+            foreach($resultAverageRatings as $rating)
+            {
+                $sorted[] = $rating[0];
+            }
+            arsort($sorted); //sorts by average rating, but also sorts their original indices (the "keys")
+            $indices = array_keys($sorted);
+            foreach($indices as $index)
+            {
+                for($i = 0; $i <= 2; $i++)
+                {
+                    $searchResults[$i][] = $unsortedSearchResults[$i][$index];
+                }
+            }
         }
 
         //Search Restaurants
@@ -92,5 +118,4 @@ class SearchController extends BaseController {
 
         return View::make('pages.search_result')->with('results', $searchResults)->with('resultsLength', $resultsLength);
     }
-
 }

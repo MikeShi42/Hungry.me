@@ -18,9 +18,9 @@ class foodInstanceController extends BaseController {
     {
         $foodInstance = food_instance::find($id);
         $foodImageDatas = ImageController::ServeCollectionFoodBase64URLs($id);
-        $restaurantImageBase64URL = array();
+        $foodImageBase64URL = array();
         foreach($foodImageDatas as $foodImageData){
-            array_push($restaurantImageBase64URL,ImageController::createBase64URL($foodImageData[0],$foodImageData[1]));
+            array_push($foodImageBase64URL,ImageController::createBase64URL($foodImageData[0],$foodImageData[1]));
         }
 
         $reviews = array();
@@ -29,10 +29,18 @@ class foodInstanceController extends BaseController {
             $reviews = $reviewsQuery->get();
         }
 
-        $rating= array('Rating' => $reviews->avg('rating')/5.0*100,'Count' => $reviews->count());
+        $ratingSum = 0;
+        $numReviews = count($reviews);
+        foreach($reviews as $review){
+            $ratingSum = $ratingSum + $review->rating;
+        }
+        $avgRating = -1;
+        if($numReviews>0)
+            $avgRating = $ratingSum/$numReviews;
 
-        return View::make('pages.food_instance')->with('food',$foodInstance)->with('rating', $rating)
-            ->with('foodImagesBase64URL', $restaurantImageBase64URL)->with('foodImagesBase64', $foodImageDatas);
+        $rating= array('Rating' => $avgRating,'Count' => $numReviews, 'Reviews'=>$reviews);
+
+        return View::make('pages.food_instance')->with('food',$foodInstance)->with('rating', $rating)->with('foodImagesBase64', $foodImageBase64URL)->with('foodImagesBase64', $foodImageDatas);
     }
 
 

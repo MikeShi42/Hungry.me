@@ -115,10 +115,11 @@ class ImageController extends BaseController
         $foodImageQuery = FoodImage::where('food_instances_id','=',$id);
         $URLs = array();
         if($foodImageQuery->count()!=0){
-            $foodImageQuery->each(function($foodImageData){
-                $imgData = $foodImageData->imageData;
+            $foodImageResults = $foodImageQuery->get();
+            foreach($foodImageResults as $foodImageResult){
+                $imgData = $foodImageResult->imageData;
                 $URLs[] = ImageController::createBase64URL('', $imgData);
-            });
+            }
             return $URLs;
         }
         return [];

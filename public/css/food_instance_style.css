@@ -1,0 +1,136 @@
+body {
+    background-color: #ecf0f1;
+}
+
+#logo {
+    position: fixed;
+    width: 110px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+#sign-in {
+    position: fixed;
+    float: right;
+    right: 30px;
+    top: 30px;
+    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+#sign-in a {
+    text-decoration: none;
+    color: black;
+}
+
+
+#sign-in a:hover {
+    color: #FA4632;
+}
+
+#container {
+    position: relative;
+    top: 35px;
+    width: 519px;
+    height: 152px;
+    left: 50%;
+    margin-left: -259.5px;
+}
+
+.food-img {
+    position: relative;
+    background: url('http://media.culturemap.com/crop/77/2a/800x600/Chipotle_Burrito.jpg') 50% 50% no-repeat;
+    width: 150px;
+    height: 150px;
+    margin: 0px 20px 0px 0px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-size: cover;
+    float:left;
+}
+
+#food-description {
+    position:relative;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    float: right;
+    margin-top: 15px;
+    top: 0px;
+
+}
+
+#name {
+    font-family: 'Roboto Slab', serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.quote {
+    font-style: italic;
+    color: gray;
+    font-size: 14px;
+}
+.review {
+    position: relative;
+    width: 550px;
+    height: 120px;
+    left: 50%;
+    margin-left: -275px;
+    top: 88px;
+    border: 1px solid black;
+    border-radius: 5px 5px;
+    background-color: white;
+}
+
+
+#review1-pic {
+    position: relative;
+    margin: 10px 30px 10px 10px;
+    background: url('http://www.examiner.com/images/blog/replicate/EXID51428/images/chipotle-chicken-bowl.jpg') 50% 50% no-repeat;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    border-radius: 5px 5px;
+    float: left;
+}
+
+.food-text {
+    position: relative;
+    margin-top: 10px;
+}
+
+#stars {
+    width: 90px;
+}
+
+.food-name {
+    font-family: 'Roboto Slab', serif;
+    font-size: 20px;
+}
+
+#number-of-reviews {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+}
+
+#number-of-reviews a {
+    text-decoration: none;
+    color: black;
+}
+
+#number-of-reviews a:hover {
+    color: #FA4632;
+}
+
+#review br {
+    display: block;
+    margin: 15px;
+}
+
+.food-description {
+    font-style: italic;
+    font-family: 'Open Sans',sans-serif;
+    font-size: 12px;
+    color: gray;
+}

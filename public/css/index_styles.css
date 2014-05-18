@@ -67,30 +67,6 @@
     font-size: 26px;
     top: 130px;
 }
-
-#body2-footer {
-    position: absolute;
-    text-align: center;
-    width: 900px;
-    left: 50%;
-    margin-left: -450px;
-    color: white;
-    font-size: 12px;
-    font-family: 'Open Sans',sans-serif;
-    font-weight: 300;
-    bottom: 10px;
-    z-index: 999;
-}
-
-#body2-footer a {
-    text-decoration: none;
-    color: white;
-}
-
-#body2-footer a:hover {
-    color: #FA4632;
-}
-
 /*
 .cf:before, .cf:after{
     content:"";
@@ -217,6 +193,29 @@
 
 .tableCell {
     vertical-align:top;
+}
+
+#body2-footer {
+    position: absolute;
+    text-align: center;
+    width: 900px;
+    left: 50%;
+    margin-left: -450px;
+    color: white;
+    font-size: 12px;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: 300;
+    bottom: 10px;
+    z-index: 999;
+}
+
+#body2-footer a {
+    text-decoration: none;
+    color: white;
+}
+
+#body2-footer a:hover {
+    color: #FA4632;
 }
 /*
 .form-wrapper button:active,
