@@ -25,25 +25,6 @@ body {
     clear:right;
 }
 
-#user {
-    margin-top: 30px;
-}
-
-#user-name {
-    position: relative;;
-    display: inline;
-    right: 0px;
-    top: 0px;
-    font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
-    margin-right: 30px;
-    padding-top: 10px;
-    font-weight: 300;
-     z-index: 999;
-    float: right;
-/*    clear: both;*/
-}
-
 /*
 #sign-in a {
     text-decoration: none;

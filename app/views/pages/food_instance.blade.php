@@ -2,6 +2,7 @@
 @section('head')
 <title>Mmm so good!</title>
 {{ HTML::style('/css/food_styles.css') }}
+{{ HTML::style('/css/subpage_footer_style.css') }}
 {{ HTML::script('/js/jquery-2.1.1.js') }}
 <script> 
     $(document).ready(function(){
