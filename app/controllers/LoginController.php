@@ -32,6 +32,14 @@ class LoginController extends BaseController
 			$user->save();
 		}
 		Auth::login($user);
+		Session::put('fbObject', $me);
 		return Redirect::to('/')->with('message', 'Logged in with Facebook');
+	}
+	
+	function Logout()
+	{
+		Auth::logout();
+		Session::forget('fbObject');
+		return Redirect::to('/');
 	}
 }

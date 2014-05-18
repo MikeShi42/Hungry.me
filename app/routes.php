@@ -14,11 +14,7 @@
 Route::get('login/fb', 'LoginController@FacebookRedirect');
 Route::get('login/fb/callback', 'LoginController@FacebookCallback');
 Route::get('login', function(){ return Redirect::to('login/fb'); });
-Route::get('logout', function()
-{
-    Auth::logout();
-    return Redirect::to('/');
-});
+Route::get('logout', 'LoginController@Logout');
 
 Route::get('/', function()
 {
@@ -33,8 +29,17 @@ Route::post('search','SearchController@showSearchResults');
 
 Route::get('private', array('before' => 'auth', function()
 {
-    return 'Authenticated!';
+	return 'Authenticated!';
 }));
+
+Route::get('imgupload', function()
+{
+	return View::make('imgupload')->with('message', Session::get('message'));
+});
+Route::post('upload', 'ImageController@GetAndSaveImage');
+
+//Route::get('imgview', 'ImageController@LoadImage');
+//Route::get('serveImage', 'ImageController@ServeImage');
 
 Route::get('restaurants/{id}/{name}', 'RestaurantInstanceController@showRestaurant')
     ->where(array('id' => '[0-9]+'));
