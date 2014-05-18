@@ -1,6 +1,13 @@
 @extends('layouts.default')
+@section('head')
+<title>Gimme some ATP</title>
+{{ HTML::style('css/search_result_style.css') }}
+@stop
 @section('content')
     <?php
+
+    $searchBy = $_POST['searchBy'];
+
     if($searchBy == 'I')
     {
         $items = $results[0];
@@ -40,4 +47,5 @@
 
     }
     ?>
+
 @stop
