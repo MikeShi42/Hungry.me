@@ -29,8 +29,14 @@ Route::post('search','SearchController@showSearchResults');
 
 Route::get('private', array('before' => 'auth', function()
 {
-    return 'Authenticated!';
+	return 'Authenticated!';
 }));
+
+Route::get('imgupload', function()
+{
+	return View::make('imgupload')->with('message', Session::get('message'));
+});
+Route::post('upload', 'ImageController@GetAndSaveImage');
 
 Route::get('restaurants/{id}/{name}', 'RestaurantInstanceController@showRestaurant')
     ->where(array('id' => '[0-9]+'));
