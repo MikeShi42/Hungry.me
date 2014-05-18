@@ -37,4 +37,4 @@ Route::get('private', array('before' => 'auth', function()
 }));
 
 Route::get('restaurants/{id}/{name}', 'RestaurantInstanceController@showRestaurant')
-->where(array('id' => '[0-9]+'));
+    ->where(array('id' => '[0-9]+'));

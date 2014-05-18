@@ -7,8 +7,4 @@ class food_instance extends Eloquent {
 
     }
 
-    
-
-}
-
 ?>
