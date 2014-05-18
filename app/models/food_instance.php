@@ -1,12 +1,16 @@
 <?php
 
 class food_instance extends Eloquent {
-
-
-    public function search_food_instance($searchString){
-
-    }
-
+	public $timestamps = false;
+	
+	public function restaurant()
+	{
+		return $this->belongsTo('restaurant', 'restaurants_id');
+	}
+	public function food_type()
+	{
+		return $this->belongsTo('food_type', 'food_types_id');
+	}
 }
 
 ?>

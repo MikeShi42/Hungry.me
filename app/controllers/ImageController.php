@@ -11,7 +11,7 @@ class ImageController extends BaseController
 			$type = Input::get('type');
 			if($type == 'restaurant' && Input::has('restaurants_id'))
 			{
-				$image = new Restaurant_Image;
+				$image = new RestaurantImage;
 				$image->restaurants_id = Input::get('restaurants_id');
 				$image->imageData = base64_encode(File::get($file));
 				$image->save();
