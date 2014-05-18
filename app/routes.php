@@ -11,27 +11,30 @@
 |
 */
 
-Route::get('/', function()
+Route::get('login/fb', 'LoginController@FacebookRedirect');
+Route::get('login/fb/callback', 'LoginController@FacebookCallback');
+Route::get('login', function(){ return Redirect::to('login/fb'); });
+Route::get('logout', function()
 {
-	$entries = Entry::all();
-	return View::make('entries')->with('entries', $entries);
+    Auth::logout();
+    return Redirect::to('/');
 });
 
-Route::any('addEntry.php', function()
+Route::get('/', function()
 {
-	$entryText = Input::get('entry');
-	$message = "Entry successfully added!";
-	if($entryText && strlen(trim($entryText)) > 0)
-	{
-		$entry = new Entry;
-		$entry->entry = $entryText;
-		$entry->save();
-		Log::info('Added new entry');
-	}else
-	{	
-		$message = "Invalid entry.";
-	}
-	
-	$entries = Entry::all();
-	return View::make('entries')->with('entries', $entries)->with('message', $message);
+    if (Auth::check())
+    {
+        return View::make('pages.home');
+    }
+    return View::make('pages.index');
 });
+
+Route::post('search','SearchController@showSearchResults');
+
+Route::get('private', array('before' => 'auth', function()
+{
+    return 'Authenticated!';
+}));
+
+Route::get('restaurants/{id}/{name}', 'RestaurantInstanceController@showRestaurant')
+->where(array('id' => '[0-9]+'));
