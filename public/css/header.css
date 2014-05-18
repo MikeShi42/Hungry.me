@@ -6,6 +6,25 @@
     height:87px;
 }
 
+#user {
+    margin-top: 30px;
+}
+
+#user-name {
+    position: relative;;
+    display: inline;
+    right: 0px;
+    top: 0px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 30px;
+    padding-top: 10px;
+    font-weight: 300;
+     z-index: 999;
+    float: right;
+/*    clear: both;*/
+}
+
 #profile-picture {
     background: url('https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-prn2/t1.0-9/s720x720/10308559_10203780055722400_5664688402385287641_n.jpg');
     background-size: cover;

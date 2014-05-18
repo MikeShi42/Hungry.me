@@ -8,6 +8,6 @@
             <div id="profile-picture" style="background: url('http://graph.facebook.com/{{ Session::get('fbObject')['id'] }}/picture')"></div>
     </div>
 	@else
-    <div id="sign-in"><a href="login">SIGN IN</a></div>
+    <div id="sign-in"><a href="/login">SIGN IN</a></div>
 	@endif
 </div>
