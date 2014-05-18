@@ -5,12 +5,24 @@
 @stop
 
 @section('content')
-        <div id="slogan">Search restaurants and menu items:</div>
-<!--SEARCH BAR-->
-<form class="form-wrapper cf">
-        <input type="text" placeholder="Search here..." required>
-        <button type="submit">Search</button>
-    </form>  
+    <div id="slogan">Search restaurants and menu items:</div>
+    <!--SEARCH BAR-->
+    <div id="outer-form-wrapper">
+        <form class="form-wrapper cf" action="/search" type="search" method="post">
+            <!--TITLE-->
+            <div id="title">What's Good?</div> <br>
+            <div id="slogan">Search restaurants and menu items:</div>
+            <br>
+            <br>
+            <br>
+            <input name="searchString" type="text" placeholder="One step closer to fooooood..." required>
+            <select name="searchBy">
+                <option value="I">Foods</option>
+                <option value="R">Restaurants</option>
+            </select>
+            <button type="submit">Search!</button>
+        </form>
+    </div>
     
     <div id="history">
         <div id="history-title">
@@ -31,7 +43,7 @@
     </div>
     <div id="suggestions">
         <div id="suggestions-title">
-            Suggestions for you &#10230;
+            Your Reviews &#10230;
         </div>
         <div class="suggestions-images">
             <a href="#"><div class="image" id="sugg1"></div></a>

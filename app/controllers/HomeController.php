@@ -2,22 +2,28 @@
 
 class HomeController extends BaseController {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
 
-	public function showWelcome()
+	public function showHome()
 	{
-		return View::make('hello');
+        $viewHistory = array();
+        $reviewItems = array();
+
+        //get view history
+        $viewedItemIDs = array();
+        $viewedItemTimeStamps = array();
+        $viewItemIDsQuery = review::where('users_id','=',Auth::user()->id);
+        if($viewItemIDsQuery->count()>0)
+        {
+            $viewedItemIDs = $viewItemIDsQuery->lists('food_instance_id');
+            $viewedItemTimeStamps = $viewItemIDsQuery->lists('timestamp');
+        }
+
+        $viewedItems = array();
+        foreach($viewedItemIDs as $viewedItemID){
+            $viewedItemID = food_instance::where('id','=','')
+        }
+
+		return View::make('pages.home')->with('history',$viewHistory)->with('reviews',$reviewItems);
 	}
 
 }

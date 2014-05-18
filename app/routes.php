@@ -20,7 +20,7 @@ Route::get('/', function()
 {
     if (Auth::check())
     {
-        return View::make('pages.home');
+        return View::get('home', 'HomeController@showHome');
     }
     return View::make('pages.index');
 });
