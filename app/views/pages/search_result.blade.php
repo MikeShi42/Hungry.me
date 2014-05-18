@@ -25,16 +25,6 @@
 
     ?>
 
-    <div id="navbar">
-        <!--LOGO-->
-        <img id="logo" src="assets/hungry.me_logo_main.png">
-        <!--USER-->
-        <div id="user">
-            <div id="user-name">Tina S. Zheng</div>
-            <div id="profile-picture"></div>
-        </div>
-    </div>
-
     <!--TITLE-->
     <!--    <div id="title">What's Good?</div> <br> -->
     <div id="slogan">Search restaurants and menu items:</div>

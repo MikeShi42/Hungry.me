@@ -43,3 +43,5 @@ Route::get('tempOpinion', function(){ return csrf_token(); });
 //this route requires a parameter _token with the value of csrf_token() to work (e.g. updateReview?food_instance_id=10&rating=3&_token=asdfasdfasdfasdf )
 Route::get('updateReview', array('before' => 'auth|csrf', 'uses' => 'ReviewController@UpdateReview'));
 Route::get('getReview', 'ReviewController@GetReview');
+
+Route::get('food/{id}/{name}','FoodInstanceController@showFoodInstance');
