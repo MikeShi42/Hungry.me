@@ -76,7 +76,7 @@
                 <div class="review" id=<?php echo "review".$i?>>
                     <div class="food-pic" id="review1-pic" style="background-image:url({{{ $restaurantsImages[$i] }}})"></div>
                     <div class="food-text">
-                        <span class="food-name" style="line-height:30px;"><?php echo $restaurants[$i]['name'];?> </span>
+                        <span class="food-name" style="line-height:30px;"><a href="/restaurants/{{ $restaurants[$i]['id'] }}/{{ $restaurants[$i]['name'] }}"><?php echo $restaurants[$i]['name'];?></a></span>
                     <span class="food-description"><?php echo $restaurants[$i]['description'];?></span>
                     <span class="food-description"><?php echo $restaurants[$i]['phoneNumber'];?></span>
                     <span class="food-description"><?php echo $restaurants[$i]['location'];?></span>

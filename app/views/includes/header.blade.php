@@ -1,6 +1,6 @@
 <div id="navbar">
     <!--LOGO-->
-    <img id="logo" src="/assets/hungry.me_logo_main.png">
+    <a href="/"><img id="logo" src="/assets/hungry.me_logo_main.png"></a>
     <!--SIGN IN/USER-->
 	@if (Auth::check())
 	<div id="user">
