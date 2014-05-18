@@ -4,7 +4,7 @@
 @stop
 @section('content')
     <div id="container">
-        <div class="restaurant-img"></div>
+        <div class="restaurant-img" style="background-image: url('{{{ $restaurantImageBase64 }}}')"></div>
 
         <div id="restaurant-description">
             <span id="name">{{{$restaurant->name}}}</span><br/>
@@ -19,7 +19,7 @@
     </div>
 @foreach($foods as $food)
     <div class="review">
-        <div class="food-pic" id="review1-pic"></div>
+        <div class="food-pic" id="review1-pic" style="background-image: url('{{{ $foodImagesBase64[$food->id] }}}')"></div>
         <div class="food-text">
             <span class="food-name" style="line-height:30px;">{{{$food->name}}} - ${{{number_format((float)$food->price, 2, '.', '')}}} </span>
 

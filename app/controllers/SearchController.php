@@ -23,7 +23,6 @@ class SearchController extends BaseController {
                     $resultNames = array_merge($resultNames,$foodNameQueryResult->get()->toArray());
             }
             $resultsItems = array_merge($resultNames,$resultsItems);
-
             //Searching food instance by tag
             foreach($searchKeyWords as $keyword)
             {

@@ -24,14 +24,22 @@ class RestaurantInstanceController extends BaseController {
     public function showRestaurant($id, $name)
     {
         $restaurant = restaurant::find($id);
+        $restaurantImageData = ImageController::ServeRestaurantBase64Image($id);
+        $restaurantImageBase64URL = ImageController::createBase64URL($restaurantImageData[0],$restaurantImageData[1]);
         $foods = food_instance::where('restaurants_id', '=',$id)->get();
         $ratings = array();
+        $images = array();
         foreach($foods as $food){
             $reviewFoodObject = review::where('food_instance_id','=',$food->id);
             $ratings[$food->id] = array('Rating' => $reviewFoodObject->avg('rating')/5.0*100,
                 'Count' => $reviewFoodObject->count());
+            $foodImageData = ImageController::ServeFoodBase64Image($food->id);
+            $images[$food->id] = ImageController::createBase64URL($foodImageData[0],$foodImageData[1]);
         }
-        return View::make('pages.restaurant_instance')->with('foods',$foods)->with('restaurant', $restaurant)->with('ratings', $ratings);
+        return View::make('pages.restaurant_instance')->with('foods',$foods)->with('restaurant', $restaurant)->with('ratings', $ratings)
+            ->with('restaurantImageBase64', $restaurantImageBase64URL)->with('foodImagesBase64', $images);
     }
+
+
 
 }
