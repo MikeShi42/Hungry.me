@@ -40,7 +40,7 @@
             {
                 ?>
                 <a href=<?php echo "'food/".$items[$i]['id']."/".$items[$i]['name']."'"?>>
-                <div class="review" id=<?php echo "review".$i?>>
+                <div class="review" id="review{{ $i }}">
                     <div class="food-pic" id="review1-pic" style="background-image:url({{{ $itemPictures[$i] }}})"></div>
                     <div class="food-text">
                         <span class="food-name" style="line-height:30px;">{{{$items[$i]['name']}}} - ${{{number_format((float)$items[$i]['price'], 2, '.', '')}}} </span>
@@ -52,7 +52,7 @@
                         <?php echo $items[$i]['description'];?>
                     </span>
                         <br/>
-                        <span id="number-of-reviews" style="line-height:30px;"><a href="#"> <?php echo sizeof($averageRatings[$i][1]).' reviews'?> &#10230;</a></span>
+                        <span id="number-of-reviews" style="line-height:30px;"><a href="#">{{ $averageRatings[$i][1] }} reviews &#10230;</a></span>
                     </div>
                 </div>
                 </a>
@@ -73,7 +73,7 @@
             for($i = 0;$i<sizeof($restaurants);$i++)
             {
             ?>
-                <div class="review" id=<?php echo "review".$i?>>
+                <div class="review" id="review{{ $i }}">
                     <div class="food-pic" id="review1-pic" style="background-image:url({{{ $restaurantsImages[$i] }}})"></div>
                     <div class="food-text">
                         <span class="food-name" style="line-height:30px;"><a href="/restaurants/{{ $restaurants[$i]['id'] }}/{{ $restaurants[$i]['name'] }}"><?php echo $restaurants[$i]['name'];?></a></span>
