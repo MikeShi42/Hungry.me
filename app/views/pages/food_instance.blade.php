@@ -24,7 +24,7 @@
 			<span id="name">{{ $food->name }} - ${{ $food->price }}</span><br/>
 			<span class="quote">"{{ $food->description }}"</span>
 			<br/>
-			<a href="{{ $food->restaurant->websiteURL; }}">{{ $food->restaurant->name }} - Los Angeles, CA</a> <!--TODO hardcoded city yay-->
+			<a href="/restaurants/{{ $food->restaurant->id; }}/{{ urlencode($food->restaurant->name) }}">{{ $food->restaurant->name }} - Los Angeles, CA</a> <!--TODO hardcoded city yay-->
 			<br/>
 			<div class="grey-review-stars">
 				<div class="red-review-stars" style="width: {{ $rating['Rating']/5.0*100 }}% "></div>
