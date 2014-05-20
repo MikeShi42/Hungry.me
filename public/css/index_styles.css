@@ -155,20 +155,31 @@
  
 */
 /* Form text input */
- 
+
+
 .form-wrapper input {
     width: 31.55%;
     height: 3.155%;
     padding: 10px 5px;
-    float: left;    
-    margin-left: 28%;
-    margin-top: 59px;
+    /*float: left;    */
+    /*margin-left: 28%;*/
+    /*margin-top: 59px;*/
     font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     border: 1 solid black;
     background: #fff;
     border-radius: 5px 5px;      
 }
- 
+
+#outer-form-wrapper{
+    margin:0 auto;
+    width: 80%;
+}
+
+#searchBar{
+    margin: 1% auto;
+    text-align: center;
+}
+
 .form-wrapper input:focus {
     outline: 0;
     background: #fff;
@@ -197,7 +208,7 @@
 .form-wrapper button {
 /*    overflow: visible;*/
     position: relative;
-    left: 30%;
+    /*left: 30%;*/
     border: 0;
     padding: 0;
     cursor: pointer;
@@ -205,14 +216,33 @@
     width: 11.83%;
     font: 15px/40px 'Open Sans', 'trebuchet MS', 'Tahoma';
     color: #FA4632;
-    margin-left: 30%;
+    /*margin-left: 30%;*/
     margin-top: -40px;
     background: #fff;
     border: 1px solid black;
     border-radius: 5px 5px;      
 /*    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);*/
-}   
-   
+}
+
+.form-wrapper select {
+    /*    overflow: visible;*/
+    position: relative;
+    /*left: 30%;*/
+    border: 0;
+    padding: 9px;
+    cursor: pointer;
+    height: 3.155%;
+    width: 11.83%;
+    font: 15px/40px 'Open Sans', 'trebuchet MS', 'Tahoma';
+    color: #FA4632;
+    /*margin-left: 30%;*/
+    /*margin-top: -40px;*/
+    background: #fff;
+    border: 1px solid black;
+    border-radius: 5px 5px;
+    /*    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);*/
+}
+
 .form-wrapper button:hover{     
     background: #FA4632;
     color: #fff
