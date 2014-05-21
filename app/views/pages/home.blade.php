@@ -36,41 +36,59 @@
             <button type="submit">Search!</button>
         </form>
     </div>
-    
+
+
     <div id="history">
         <div id="history-title">
             Your History &#10230;
         </div>
         <div class="history-images">
-            <a href="#"><div class="image" id="image1" style="background-image:url({{{$viewedItemPictures[0] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="image2" style="background-image:url({{{$viewedItemPictures[1] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="image3" style="background-image:url({{{$viewedItemPictures[2] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="image4" style="background-image:url({{{$viewedItemPictures[3] or ''}}})"></div></a>
-            <a href="#"><div id="arrow">v</div></a>
+            @if (sizeof($viewedItemPictures = 0)
+            Your history is empty! Browse and search around!
+            @endif
+            @for ($i = 0; $i < sizeof($viewedItemPictures) && $i < 4; $i++)
+                <a href=<?php echo "'food/".$viewedItemsIDs[$i]."/".$viewedItems[$i]['name']."'"?>>
+                    <div class="image" id="image{{{$i}}}" style="background-image:url({{{$viewedItemPicture[$i] or ''}}})"></div>
+                </a>
+            @endfor
+            @if (sizeof($viewedItemPictures) > 4)
+                <a href="#"><div id="arrow">v</div></a>
+            @endif
         </div>
+        @if (sizeof($viewedItemPictures) > 4)
         <div class="more-history-images">
-            <a href="#"><div class="image" id="image5" style="background-image:url({{{$viewedItemPictures[4] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="image6" style="background-image:url({{{$viewedItemPictures[5] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="image7" style="background-image:url({{{$viewedItemPictures[6] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="image8" style="background-image:url({{{$viewedItemPictures[7] or ''}}})"></div></a>
+            @for ($i = 4; $i < sizeof($viewedItemPictures) && $i < 8; $i++)
+            <a href=<?php echo "'food/".$viewedItemsIDs[$i]."/".$viewedItems[$i]['name']."'"?>>
+                    <div class="image" id="image{{{$i}}}" style="background-image:url({{{$viewedItemPictures[$i] or ''}}})"></div>
+                </a>
+            @endfor
         </div>
+            @endif
+
     </div>
     <div id="suggestions">
         <div id="suggestions-title">
             Your Reviews &#10230;
         </div>
         <div class="suggestions-images">
-            <a href="#"><div class="image" id="sugg1" style="background-image:url({{{$reviewItemPictures[0] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="sugg2" style="background-image:url({{{$reviewItemPictures[1] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="sugg3" style="background-image:url({{{$reviewItemPictures[2] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="sugg4" style="background-image:url({{{$reviewItemPictures[3] or ''}}})"></div></a>
-            <a href="#"><div id="arrow2">v</div></a>
+            @for ($i = 0; $i < sizeof($reviewItemPictures) && $i < 4; $i++)
+            <a href=<?php echo "'food/".$reviewItems[$i]['id']."/".$reviewItems[$i]['name']."'"?>>
+                <div class="image" id="image{{{$i}}}" style="background-image:url({{{$reviewItemPictures[$i] or ''}}})"></div>
+            </a>
+            @endfor
+            @if (sizeof($viewedItemPictures) > 4)
+                <a href="#"><div id="arrow2">v</div></a>
+            @endif
         </div>
+        @if (sizeof($viewedItemPictures) > 4)
         <div class="more-suggestions-images">
-            <a href="#"><div class="image" id="sugg5" style="background-image:url({{{$reviewItemPictures[4] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="sugg6" style="background-image:url({{{$reviewItemPictures[5] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="sugg7" style="background-image:url({{{$reviewItemPictures[6] or ''}}})"></div></a>
-            <a href="#"><div class="image" id="sugg8" style="background-image:url({{{$reviewItemPictures[7] or ''}}})"></div></a>
+            @for ($i = 4; $i < sizeof($reviewItemPictures) && $i < 8; $i++)
+            <a href=<?php echo "'food/".$reviewItems[$i]."/".$reviewItems[$i]['name']."'"?>>
+                <div class="image" id="image{{{$i}}}" style="background-image:url({{{$reviewItemPictures[$i] or ''}}})"></div>
+            </a>
+            @endfor
         </div>
+            @endif
+
     </div>
 @stop
